@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_162056) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_12_093614) do
+  create_table "basket_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "basket_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["basket_id"], name: "index_basket_items_on_basket_id"
+    t.index ["item_id"], name: "index_basket_items_on_item_id"
+  end
+
   create_table "baskets", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "checkout_id", null: false
     t.datetime "created_at", null: false
@@ -29,8 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_162056) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "basket_id"
-    t.index ["basket_id"], name: "index_items_on_basket_id"
   end
 
   create_table "rules", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -40,7 +47,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_162056) do
     t.index ["checkout_id"], name: "index_rules_on_checkout_id"
   end
 
+  add_foreign_key "basket_items", "baskets"
+  add_foreign_key "basket_items", "items"
   add_foreign_key "baskets", "checkouts"
-  add_foreign_key "items", "baskets"
   add_foreign_key "rules", "checkouts"
 end

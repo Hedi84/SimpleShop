@@ -1,5 +1,5 @@
 class Basket < ApplicationRecord
-  has_many :items
+  has_many :basket_items
   belongs_to :checkout
 
   def initialize
