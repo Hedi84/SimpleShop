@@ -1,0 +1,3 @@
+class Rules::BulkDiscount
+
+end
