@@ -1,0 +1,25 @@
+<%= link_to "Add a new item to the shop", new_item_path %>
+<% if @basket_id %>
+  <%= link_to "Check your basket", basket_path(@basket_id) %>
+<%end%>
+<ul>
+  <li> <%= link_to 'Add a new bulk discount', new_rules_bulk_discount_path %> </li>
+  <li> <%= link_to 'Add a new coupon discount', new_rules_coupon_discount_path %> </li>
+  <li> <%= link_to 'Add a new price discount', new_rules_price_discount_path %> </li>
+  <li> <%= link_to 'View all discounts', rules_path %> </li>
+</ul>
+
+
+
+<div class='container'>
+  <% @items.each do |item| %>
+    <div class="card" style="width: 18rem; margin-top:2%;">
+      <img src= "https://cdn4.iconfinder.com/data/icons/for-your-interface-free-samples/128/Label-256.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%=item.name%></h5>
+        <p class="card-text"><%=item.description.truncate(27)%></p>
+        <p class="card-text"><%="£#{item.price}"%></p>
+        <%= link_to "check out #{item.name}", item_path(item) %>
+      </div>
+    </div>
+  <%end%>

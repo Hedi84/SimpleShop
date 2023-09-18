@@ -1,0 +1,2 @@
+module Rules::CouponDiscountsHelper
+end

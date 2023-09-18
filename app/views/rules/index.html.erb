@@ -1,0 +1,9 @@
+<h2>Existing discount rules </h2>
+<%= link_to 'add a new bulk discount', new_rules_bulk_discount_path %>
+
+<ul>
+    <% @rules.each do |rule| %>
+         <b> name: <%=rule.name%> </b>
+        <li><%=link_to 'View discount rule', public_send(rule.discount_show_path, rule.ruling)%></li>
+    <% end %>
+</ul>

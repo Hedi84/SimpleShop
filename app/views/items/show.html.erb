@@ -1,0 +1,8 @@
+<h3> <%="Would you like to add #{@item.name} to your basket?"%> </h3>
+<p> <%="Product name: #{@item.name}"%> </p>
+<p> <%="Description: #{@item.description}"%> </p>
+<p> <%="Price: £#{@item.price}"%> </p>
+<p> <%="Item code: #{@item.item_code}"%> </p>
+<%= link_to "Add to basket", add_to_basket_path(@item.id), data: { 'turbo-method' => :post } %>
+<%= link_to "go back", items_path %>
+<%= link_to "Edit this item", edit_item_path(@item.id) %>

@@ -1,0 +1,13 @@
+<div class='form'>
+  <%= form_with model: @price_discount do |f| %>
+    <div class='mb-3'> <%= f.label :total_price %> </div>
+    <div class='mb-3'> <%= f.number_field :total_price %> </div>
+    <%= f.fields_for :rule do |rule| %>
+        <div class='mb-3'> <%=rule.label :name %> </div>
+        <div class='mb-3'> <%=rule.text_field :name %> </div>
+        <div class='mb-3'> <%=rule.label :discount %> </div>
+        <div class='mb-3'> <%=rule.number_field :discount %> </div>
+    <% end %>
+    <div class='mb-3'> <%= f.submit %> </div>
+  <% end %>
+</div>

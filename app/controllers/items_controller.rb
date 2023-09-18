@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
     before_action :find_item, only: [:show, :edit, :update, :delete]
+    skip_before_action :authenticate_user!, only: [:index, :show]
+
     def index
         @items = Item.all
+        @basket_id = basket_id
     end
 
     def show
@@ -13,9 +16,11 @@ class ItemsController < ApplicationController
 
     def create
         @item = Item.create(item_params)
+        redirect_to item_path(@item.id)
     end
 
     def delete
+        @item.delete
     end
 
     def edit
@@ -23,15 +28,20 @@ class ItemsController < ApplicationController
 
     def update
         @item.update(item_params)
+        redirect_to item_path(@item.id)
     end
 
     private
 
     def find_item
-        @item = Item.find(params[:id])
+        @item ||= Item.find(params[:id])
     end
 
     def item_params
-        params.require(:item).permit(:name, :price, :description)
+        params.require(:item).permit(:name, :price, :description, :item_code)
+    end
+
+    def basket_id
+        @basket_id ||= Basket.where(user_id: current_user&.id).last
     end
 end

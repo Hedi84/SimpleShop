@@ -1,3 +1,0 @@
-class Rules::Discount
-
-end

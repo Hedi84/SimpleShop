@@ -1,0 +1,13 @@
+<div class='form'>
+  <%= form_with model: @item do |f| %>
+    <div class='mb-3'> <%= f.label :name %> </div>
+    <div class='mb-3'> <%= f.text_field :name %> </div>
+    <div class='mb-3'> <%= f.label :description %> </div>
+    <div class='mb-3'> <%= f.text_field :description %> </div>
+    <div class='mb-3'> <%= f.label :price %> </div>
+    <div class='mb-3'> <%= f.number_field :price %> </div>
+    <div class='mb-3'> <%= f.label :item_code %> </div>
+    <div class='mb-3'> <%= f.text_field :item_code %> </div>
+    <div class='mb-3'> <%= f.submit %> </div>
+  <% end %>
+</div>
