@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_18_203933) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_092532) do
   create_table "basket_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "basket_id", null: false
     t.bigint "item_id", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_203933) do
   create_table "checkouts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "calculated_total", default: 0.0
   end
 
   create_table "coupon_discounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -68,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_203933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ruling_type", null: false
+    t.boolean "active", default: false
     t.index ["ruling_id"], name: "index_rules_on_ruling_id"
   end
 

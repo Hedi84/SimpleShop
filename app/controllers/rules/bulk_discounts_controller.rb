@@ -1,5 +1,6 @@
 class Rules::BulkDiscountsController < ApplicationController
     before_action :find_bulk_discount, only: [:show, :destroy]
+
     def new
         @bulk_discount = Rules::BulkDiscount.new
         rule = Rule.new

@@ -5,5 +5,8 @@
     <% @rules.each do |rule| %>
          <b> name: <%=rule.name%> </b>
         <li><%=link_to 'View discount rule', public_send(rule.discount_show_path, rule.ruling)%></li>
+            <%  active = rule.active ?  'active' : 'not active' %>
+            <li>  <%= "#{active}" %> </li>
+        <li><%=link_to 'Toggle Discount', activate_rule_path(rule.id), data: { turbo_method: :post }%></li>
     <% end %>
 </ul>

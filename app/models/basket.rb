@@ -1,15 +1,10 @@
 class Basket < ApplicationRecord
-  has_many :basket_items
+  has_many :basket_items, dependent: :delete_all
   belongs_to :checkout
   belongs_to :user
 
-  # def add item_name
-  #   Item.create(
-  #     name: item_name,
-  #   )
-  # end
 
-  def total
+  def total_price
       total_price = 0
       basket_items.each do |basket_item|
          total_price += basket_item.item.price

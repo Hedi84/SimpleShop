@@ -1,5 +1,6 @@
 class Rule < ApplicationRecord
     belongs_to :ruling, polymorphic: true, dependent: :destroy
+    has_many :Checkout_rules
 
     def discount_show_path
         "rules_#{discount_type_string}discount_path"

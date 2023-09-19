@@ -1,10 +1,13 @@
 class CheckoutsController < ApplicationController
-    before_action :find_checkout, only: [:show, :delete]
+    before_action :find_checkout, only: [:show, :destroy]
 
     def show
+        @checkout.calculate_total
+        basket
     end
 
-    def delete
+    def destroy
+        @checkout.destroy
         redirect_to root_path
     end
 

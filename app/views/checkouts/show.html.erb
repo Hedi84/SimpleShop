@@ -1,2 +1,11 @@
 <h2>Checkout</h2>
+<ul>   
+    |<% @basket.basket_items.each do |basket_item| %>
+        <li> <%= basket_item.item.name %> </li>
+    <% end %>
+    <li> <%="Total: £ #{@basket.total_price}"%> </li>
+    <li><%="Discounted total: £ #{@checkout.calculated_total}"%> </li>
+</ul>
 
+
+<%= link_to 'Pay and ship', checkout_path(@checkout.id), data: { turbo_method: :delete } %>

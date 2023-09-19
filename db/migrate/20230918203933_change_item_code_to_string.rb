@@ -3,3 +3,5 @@ class ChangeItemCodeToString < ActiveRecord::Migration[7.0]
     change_column(:bulk_discounts, :item_code, :string)
   end
 end
+
+

@@ -1,5 +1,5 @@
 class RulesController < ApplicationController
-    before_action :find_rule, only: [:show, :edit, :update, :delete]
+    before_action :find_rule, only: [:show, :edit, :update, :delete, :activate, :deactivate]
     def show
         find_discount
     end
@@ -19,6 +19,16 @@ class RulesController < ApplicationController
         redirect_to rules_path
     end
 
+    def update
+        if @rule.active?
+            @rule.active = false
+        else
+            @rule.active = true
+        end
+        @rule.save
+        redirect_to rules_path
+    end
+
     private
 
     def find_rule
@@ -30,6 +40,6 @@ class RulesController < ApplicationController
     end
 
     def rule_params
-        params.require(:rule).permit(:name, :discount)
+        params.require(:rule).permit(:name, :discount, :active)
     end
 end

@@ -3,7 +3,7 @@
         <% item = basket_item.item %>
         <li><%="#{item.name}  :      £ #{item.price}"%> <%= link_to "Remove", basket_item_path(basket_item.id), data: { 'turbo-method' => :delete } %></li> 
     <% end %>
-    <p><%="Current total(without any calculated discounts)  -      £ #{@basket.total} "%></p>
+    <p><%="Current total(without any calculated discounts)  -      £ #{@basket.total_price} "%></p>
 </ul>
 <%= link_to "go back", items_path %>
 <%= link_to "Continue to checkout", checkout_path(@basket.checkout.id) %>
